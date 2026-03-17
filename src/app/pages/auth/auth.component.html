@@ -1,8 +1,14 @@
-<p>auth works!</p>
 <!-- а тут вставлены селекторы компонентов (если я правильно их назвала) -->
-<div>
-<app-authorization></app-authorization>
-</div> 
-<div>
-<app-registration></app-registration>
+<div class="d-flex justify-content-center align-item-center h-100">
+
+    <mat-tab-group>
+        <mat-tab label="Авторизация"> 
+            <app-authorization/>
+        </mat-tab>
+        <mat-tab label="Регистрация"> 
+            <app-registration/>
+        </mat-tab>
+       
+    </mat-tab-group>
+   
 </div>

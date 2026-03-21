@@ -17,6 +17,8 @@ export class RegistrationComponent {
   email = "";
 
   onAuth(ev: Event): void {
-    console.log('ev', ev)
+    if (this.login) {
+      localStorage.setItem('user', this.login)
+    }
   }
 }

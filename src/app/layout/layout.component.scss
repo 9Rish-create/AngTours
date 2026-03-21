@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.layout {
+  display: flex;
+}
+
+app-aside {
+  width: 250px;
+}
+
+.main {
+  flex: 1;
+}

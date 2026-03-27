@@ -1,6 +1,6 @@
+import { iEnvironment } from "../app/models/environment";
 
-
-export const environment = {
+export const environment: iEnvironment = {
     production: true,
-    server: 'http://my-prod-url'
+    server: ''
 };

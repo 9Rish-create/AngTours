@@ -4,10 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  user: any;
 
   constructor() { }
 
   saveUserInStore(user: any): void {
-    localStorage.setItem('user', user);
+
+    this.setUser(user);
+    localStorage.setItem('user', JSON.stringify(user)); //преобразовали объект в строку для сохранения объекта
   }
+
+  getUser(): any{
+    return this.user;
+  }
+
+
+  setUser(user: any): void{
+    this.user = user;
+  }
+
+
 }

@@ -23,7 +23,12 @@ export class AuthorizationComponent {
   }
 
   onAuth(ev: Event): void {
-   
+    if (this.saveInStore) {
+      
+      this.userService.saveUserInStore({login:this.login})
+    } else {
+      this.userService.setUser({login: this.login});
+    }
   }
   // ДЗ к 1 практике
   // onAuth(ev: Event) {

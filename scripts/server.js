@@ -71,7 +71,7 @@ app.post('/auth', (req, res) => {
             }
         } 
     } else {
-        throw new Error('не нфйдено свойство login или password');
+        throw new Error('не найдено свойство login или password');
     }
 })
 

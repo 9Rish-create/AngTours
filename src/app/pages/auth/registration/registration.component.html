@@ -2,24 +2,24 @@
     <div class="d-flex flex-column registration-wrap mt-3 ">
         <p>Ваш логин {{login}}</p>
         <div>
-            <input placeholder="Логин" 
+            <input name="login" placeholder="Логин" 
             [ngClass]="{'input-error': login.length < 3}"
             [(ngModel)]="login"/>
         </div>
 
         <div>
-            <input type="email" placeholder="Почта"
+            <input name="email" type="email" placeholder="Почта"
             [(ngModel)]="email"/>
         </div>
 
         <div>
-            <input type="password" placeholder="Пароль"
+            <input name="password" type="password" placeholder="Пароль"
             [ngClass]="{'input-error': !password || password.length < 6}"
             [(ngModel)]="password"/>
         </div>
 
         <div>
-            <input type="password" placeholder="Повтор пароля"
+            <input name="passwordRepeat" type="password" placeholder="Повтор пароля"
             [ngClass]="{'input-error': passwordRepeat !== password}"
             [(ngModel)]="passwordRepeat"/>
         </div>

@@ -7,7 +7,7 @@ import { UserService } from '../../../services/user.service';
 import { API } from '../../../shared/api'
 import { userApiService } from '../../../services/api/user-api.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authorization',
@@ -17,11 +17,14 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 })
 export class AuthorizationComponent  implements OnInit, OnDestroy{
   private userService = inject(UserService);
+  private _snackBar = inject(MatSnackBar);
+  private router = inject(Router)
   login = "";
   password = "";
   saveInStore = false;
   userApiService = inject(userApiService);
-  private _snackBar = inject(MatSnackBar)
+
+
   
 
   constructor (private userService2: UserService){
@@ -48,7 +51,9 @@ export class AuthorizationComponent  implements OnInit, OnDestroy{
           } else {
             this.userService.setUser({login: this.login});
             } this._snackBar.open('Успех!', 'OK', {duration: 3000});
-        }, //дз сообщение об ошибке
+            this.router.navigate(["/"])
+        }, 
+         //дз сообщение об ошибке
         (error) => { this._snackBar.open('Ошибка авторизации', 'NOT OK (500)', {duration: 3000})
           
         });

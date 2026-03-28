@@ -8,7 +8,7 @@ import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-registration',
-  imports: [NgClass, FormsModule, MatButtonModule, MatSnackBar],
+  imports: [NgClass, FormsModule, MatButtonModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss',
   standalone: true
@@ -57,7 +57,7 @@ export class RegistrationComponent {
           duration: 3000
         });
   
-        // сохранение пользователя в локальное хранилище
+        //здесь сохранение пользователя в локальное хранилище
         localStorage.setItem('user', this.login);
       },
 

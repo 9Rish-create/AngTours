@@ -58,7 +58,11 @@ export class RegistrationComponent {
         });
   
         //здесь сохранение пользователя в локальное хранилище
-        localStorage.setItem('user', this.login);
+        this.userService.saveUserInStore(
+          {login: this.login,
+           email: this.email
+          }
+        )
       },
 
       error: (err) => {

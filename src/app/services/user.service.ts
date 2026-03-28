@@ -34,5 +34,12 @@ export class UserService {
   register(data: RegisterRequest): Observable<any> {
     return this.http.post(`${this.apiURL}/register`, data);
   }
+  getUserFromStorage(): any {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
 
 }
+
+
+

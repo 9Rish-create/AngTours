@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgClass } from '@angular/common';
@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './authorization.component.html',
   styleUrl: './authorization.component.scss',
 })
-export class AuthorizationComponent {
+export class AuthorizationComponent  implements OnInit, OnDestroy{
   private userService = inject(UserService);
   login = "";
   password = "";
@@ -19,8 +19,19 @@ export class AuthorizationComponent {
   
 
   constructor (private userService2: UserService){
-
+        console.log('constr init')
   }
+  // вызывается один раз, сразу после того, как компонент был создан и вставлен в DOM
+  ngOnInit() {
+    console.log('auth init')
+  }
+
+  //метод вызывается перед уничтожением компонента.
+  ngOnDestroy() {
+    console.log('auth destroy')
+  }
+
+
 
   onAuth(ev: Event): void {
     if (this.saveInStore) {

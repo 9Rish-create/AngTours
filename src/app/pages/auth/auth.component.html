@@ -3,11 +3,21 @@
 
     <mat-tab-group  dynamicHeight="true">
         <mat-tab label="Авторизация"> 
-            <app-authorization/>
+             <!-- директива для динамичесского добавления компонента -->
+            <ng-template matTabContent>
+                <app-authorization/>
+            </ng-template>
+            
         </mat-tab>
 
-        <mat-tab label="Регистрация"> 
-            <app-registration/>
+
+        <mat-tab label="Регистрация">
+             <!-- директива для динамичесского добавления компонента -->
+            <ng-template matTabContent>
+            
+                <app-registration/>
+            
+            </ng-template>
         </mat-tab>
        
     </mat-tab-group>

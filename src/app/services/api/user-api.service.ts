@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { API } from "../../shared/api";
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -13,6 +14,8 @@ export class userApiService {
     private http = inject(HttpClient);
 
     constructor() {}
+
+    
 
 
     // дз по 2 практике 

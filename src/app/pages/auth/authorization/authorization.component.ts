@@ -4,10 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgClass } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { UserService } from '../../../services/user.service';
+import { API } from '../../../shared/api'
+import { userApiService } from '../../../services/api/user-api.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'app-authorization',
-  imports: [NgClass, FormsModule, MatButtonModule, MatCheckboxModule],
+  imports: [NgClass, FormsModule, MatButtonModule, MatCheckboxModule, MatSnackBarModule],
   templateUrl: './authorization.component.html',
   styleUrl: './authorization.component.scss',
 })
@@ -16,6 +20,8 @@ export class AuthorizationComponent  implements OnInit, OnDestroy{
   login = "";
   password = "";
   saveInStore = false;
+  userApiService = inject(userApiService);
+  private _snackBar = inject(MatSnackBar)
   
 
   constructor (private userService2: UserService){
@@ -34,13 +40,22 @@ export class AuthorizationComponent  implements OnInit, OnDestroy{
 
 
   onAuth(ev: Event): void {
-    if (this.saveInStore) {
-      
-      this.userService.saveUserInStore({login:this.login})
-    } else {
-      this.userService.setUser({login: this.login});
-    }
-  }
+
+      this.userApiService.auth({login: this.login, password: this.password}).subscribe(() => {
+          if (this.saveInStore) {
+          
+            this.userService.saveUserInStore({login: this.login})
+          } else {
+            this.userService.setUser({login: this.login});
+            } this._snackBar.open('Успех!', 'OK', {duration: 3000});
+        }, //дз сообщение об ошибке
+        (error) => { this._snackBar.open('Ошибка авторизации', 'NOT OK (500)', {duration: 3000})
+          
+        });
+      } 
+}
+
+   
   // ДЗ к 1 практике
   // onAuth(ev: Event) {
   //   const savedLogin = localStorage.getItem('user');
@@ -50,5 +65,4 @@ export class AuthorizationComponent  implements OnInit, OnDestroy{
   //     return;
   //   }
   //   alert('Успех!');
-  // }
- }
+  

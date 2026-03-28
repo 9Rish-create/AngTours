@@ -13,6 +13,7 @@ let parseJasonData = JSON.parse(jsonFileData); //
 const app = express();
 const port = 3000;
 
+//добавляет заголовок
 app.use(cors());
 
 app.use(express.json());

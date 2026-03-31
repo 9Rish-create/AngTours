@@ -30,14 +30,16 @@ app.post('/register', (req, res) => {
             if (!isUserExist) {
                 parseJasonData.users.push(req.body);
                 const json = JSON.stringify(parseJasonData);
-                fs.writeFileSync(userJson, json, 'utf-8', (data) => {}, (error) => {
-                    console.log('Ошибка при записи файла', error)
+                fs.writeFileSync(userJson, json, 'utf-8', (data) => {}, (err) => {
+                    console.log('Ошибка при записи файла', err)
                 });
 
-                res.send('ok');
-            } else {
-                throw new Error('Пользователь уже зарегистрирован');
+                res.send({status: "OK"});
             } 
+                
+            else {
+                throw new Error('Пользователь уже зарегестрирован')
+            }
     } else {
         throw new Error('Не найдено свойство login');
     }
@@ -52,7 +54,7 @@ app.post('/auth', (req, res) => {
 
     if (req.body?.login && req.body.password) {
         //считываем файл
-        const jsonFileData = fs.readFileSync(userJson, 'utf-8', (error, data) => {}, (error) => {console.log('err read file', error);});
+        const jsonFileData = fs.readFileSync(userJson, 'utf-8', (err, data) => {}, (err) => {console.log('err read file', err);});
     
         //парсим файл
         const parseJasonData = JSON.parse(jsonFileData);
@@ -64,10 +66,9 @@ app.post('/auth', (req, res) => {
             const isUserExist = parseJasonData?.users.find((user) => user.login === req.body?.login && user.password === req.body?.password);
 
             if (isUserExist) {
-                res.send(isUserExist);
+                return res.send(isUserExist);
             } else {
-
-                throw new Error('AUTH-Error')
+                return res.status(401).send({error: true, errorText: 'Ошибка - пользователь не найден'});
 
             }
         } 

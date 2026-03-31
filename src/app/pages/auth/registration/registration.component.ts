@@ -1,10 +1,13 @@
 import { NgClass } from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterRequest } from '../../../services/register.interface';
 import { UserService } from '../../../services/user.service';
+import { userApiService } from '../../../services/api/user-api.service';
+
+
 
 @Component({
   selector: 'app-registration',
@@ -27,7 +30,7 @@ export class RegistrationComponent {
   onAuth(ev: Event): void {
 
     ev.preventDefault() //на всякий случай
-
+    const regUser: RegisterRequest = {login: this.login}
     //проверка на заполненные поля
     if (!this.login || !this.password || !this.passwordRepeat || !this.email) {
       this.snackBar.open('Заполните все поля', 'Закрыть', {

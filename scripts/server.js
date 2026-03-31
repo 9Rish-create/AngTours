@@ -22,12 +22,44 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 });
 
+// app.post('/register', (req, res) => {
+//     try {
+//         if (!req.body?.login) {
+//             return res.status(400).send({ error: 'Нет login' });
+//         }
+
+//         const jsonFileData = fs.readFileSync(userJson, 'utf-8');
+//         const data = JSON.parse(jsonFileData);
+
+//         const isUserExist = data.users.find(
+//             (user) => user.login === req.body.login
+//         );
+
+//         if (isUserExist) {
+//             return res.status(400).send({
+//                 error: 'Пользователь уже существует'
+//             });
+//         }
+
+//         data.users.push(req.body);
+//         fs.writeFileSync(userJson, JSON.stringify(data), 'utf-8');
+
+//         return res.send({ status: 'OK' });
+
+//     } catch (error) {
+//         console.error('REGISTER ERROR:', error);
+//         return res.status(500).send({
+//             error: 'Internal Server Error'
+//         });
+//     }
+// });
+
 app.post('/register', (req, res) => {
     //ищем пользователя по совпадению
     if (req.body?.login) {
         const isUserExist = parseJasonData.users.find((user) => user.login === req.body?.login);
 
-            if (!isUserExist) {
+            if (!isUserExist && req.body.password) {
                 parseJasonData.users.push(req.body);
                 const json = JSON.stringify(parseJasonData);
                 fs.writeFileSync(userJson, json, 'utf-8', (data) => {}, (err) => {

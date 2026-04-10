@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { RegisterRequest } from './register.interface';
+import { IRegisterUser } from '../models/user';
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -31,7 +31,7 @@ export class UserService {
     this.user = user;
   }
 
-  register(data: RegisterRequest): Observable<any> {
+  register(data: IRegisterUser): Observable<any> {
     return this.http.post(`${this.apiURL}/register`, data);
   }
   getUserFromStorage(): any {

@@ -3,7 +3,7 @@ import {Component, inject, ViewEncapsulation} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { userApiService } from '../../../services/api/user-api.service';
-import { IREgisterUser } from '../../../models/user';
+import { IRegisterUser } from '../../../models/user';
 
 
 
@@ -32,7 +32,7 @@ export class RegistrationComponent {
   onAuth(ev: Event): void {
 
     ev.preventDefault() //на всякий случай
-    const regUser: IREgisterUser = {login: this.login, email: this.email, password: this.password};
+    const regUser: IRegisterUser = {login: this.login, email: this.email, password: this.password};
 
     this.userApiService.registration(regUser).subscribe((data) => {console.log('ok')})
   }}

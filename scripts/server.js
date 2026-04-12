@@ -6,7 +6,11 @@ const { log, error } = require('console');
 
 //user
 
-const userJson = "./src/app/shared/mocks/users.json"; //путь к моковым данным
+//const userJson = "./src/app/shared/mocks/users.json"; //путь к моковым данным
+const userJson = "./server-data/users.json";
+
+const toursJson = "./server-data/tours.json";
+
 const jsonFileData = fs.readFileSync(userJson, 'utf-8');
 let parseJasonData = JSON.parse(jsonFileData); //
 
@@ -66,7 +70,7 @@ app.post('/register', (req, res) => {
                     console.log('Ошибка при записи файла', err)
                 });
 
-                res.send({status: "OK"});
+                res.send("OK");
             } 
                 
             else {

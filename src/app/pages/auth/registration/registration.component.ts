@@ -34,7 +34,8 @@ export class RegistrationComponent {
     ev.preventDefault() //на всякий случай
     const regUser: IRegisterUser = {login: this.login, email: this.email, password: this.password};
 
-    this.userApiService.registration(regUser).subscribe((data) => {console.log('ok')})
+    this.userApiService.registration(regUser).subscribe((data) => {console.log('ok')}, (err) => {console.log('err')}
+    )
   }}
 
     //проверка на заполнение совпадение паролей

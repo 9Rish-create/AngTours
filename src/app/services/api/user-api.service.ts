@@ -20,8 +20,8 @@ export class userApiService {
         return this.http.post<IAuthUserRes>(this.api.auth, body)
     }
 
-    registration(body: IRegisterUser): Observable<IRegUserRes> {
-        return this.http.post<IRegUserRes>(this.api.register, body)
+    registration(body: IRegisterUser): Observable<string> {
+        return this.http.post(this.api.register, body, {responseType: 'text'})
     }
 }
 

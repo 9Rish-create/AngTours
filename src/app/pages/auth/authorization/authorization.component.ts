@@ -8,6 +8,7 @@ import { API } from '../../../shared/api'
 import { userApiService } from '../../../services/api/user-api.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { IAuthUser } from '../../../models/user';
 
 @Component({
   selector: 'app-authorization',
@@ -44,7 +45,9 @@ export class AuthorizationComponent  implements OnInit, OnDestroy{
 
   onAuth(ev: Event): void {
 
-      this.userApiService.auth({login: this.login, password: this.password}).subscribe((res:any) => {
+    const authUser: IAuthUser = {login: this.login, password: this.password}
+
+      this.userApiService.auth(authUser).subscribe((data) => {
           if (this.saveInStore) {
           
             this.userService.saveUserInStore({login: this.login})

@@ -9,10 +9,11 @@ import { ToursService } from '../../services/tours.service';
 })
 export class ToursComponent implements OnInit{
   private tourService = inject(ToursService);
+  tours: any;
 
   ngOnInit(): void {
-    this.tourService.getTours().subscribe((data) => {
-      console.log('data tours', data)
+    this.tourService.getTours().subscribe((data: any) => {
+      this.tours = data.tours; //добавить типы
     })
   }
 }

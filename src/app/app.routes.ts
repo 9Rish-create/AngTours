@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './pages/auth/auth.component';
 import {  LayoutComponent } from './layout/layout.component'
+import { ToursComponent } from './pages/tours/tours.component';
 
 export const routes: Routes = [
     
@@ -10,15 +11,18 @@ export const routes: Routes = [
 
     },
 
-    {
-        path: 'register', 
-        loadComponent: () => import('./pages/auth/registration/registration.component').then(c => c.RegistrationComponent)
-
-    },
 
     {
         path: '', 
-        component: LayoutComponent},
+        component: LayoutComponent,
+        children: [ 
+            {
+                path: '',
+                component: ToursComponent
+            }
+
+        ]
+    },
 
     // {path: '',
     //    loadComponent: () => import('./layout/layout.component').then(c => c.LayoutComponent) 

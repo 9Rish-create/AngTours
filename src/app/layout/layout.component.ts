@@ -4,9 +4,14 @@ import { FooterComponent } from "./footer/footer.component"
 import { HeaderComponent} from "./header/header.component"
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-layout',
-  imports: [AsideComponent, FooterComponent, HeaderComponent, RouterModule],
+  imports: [AsideComponent, 
+            FooterComponent, 
+            HeaderComponent, 
+            RouterModule, 
+            ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

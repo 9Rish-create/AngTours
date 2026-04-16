@@ -1,8 +1,19 @@
-<div class="layout-header">
-    <div class="left">
-      заглушка для будущего логотипа
+<div class="layout-header d-flex justify-content-end" >
+
+    <div class="menu-list d-flex flex-1">
+        <div>
+          <app-menu [items]="menuItems" label="test"/>
+        </div>
+        
     </div>
-    <div class="right">
+
+    <div class="time-wrap">
+      {{date | date:"HH:mm:ss EEEE"}}
+    </div>
+
+
+   
+    <div class="user-info-wrap">
         <span *ngIf="userLogin">
           {{ userLogin }}
         </span>

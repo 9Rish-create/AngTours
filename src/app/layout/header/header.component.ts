@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { DatePipe, NgIf } from '@angular/common';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf, DatePipe],
+  imports: [NgIf, DatePipe, MenuComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   standalone: true

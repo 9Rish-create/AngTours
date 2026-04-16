@@ -1,6 +1,7 @@
 <div>
     {{label}}
+
     @for (item of items; track $index) {
-        <a routerLink="/{{item.route}}">{{ite.title}}</a>
+        <a routerLink="/{{item.route}}">{{item.title}}</a>
     }
 </div>

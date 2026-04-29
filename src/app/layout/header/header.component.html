@@ -2,7 +2,7 @@
 
     <div class="menu-list d-flex flex-1">
         <div>
-          <app-menu [items]="menuItems" label="test"></app-menu>
+          <app-menu [items]="menuItems" label="Меню"></app-menu>
         </div>
         
     </div>
@@ -17,5 +17,16 @@
         <span *ngIf="userLogin">
           {{ userLogin }}
         </span>
-      </div>
+    </div>
+
+    <header class="header">
+      <span class="title">Моё приложение</span>
+    
+      <span class="spacer"></span>
+    
+      <button mat-button color="primary" (click)="logout()">
+        Выйти
+      </button>
+    </header>
+
 </div>

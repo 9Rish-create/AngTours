@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { DatePipe, NgIf } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
+import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf, DatePipe, MenuComponent],
+  imports: [NgIf, DatePipe, MenuComponent, MatButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   standalone: true
@@ -13,17 +15,22 @@ import { MenuComponent } from './menu/menu.component';
 export class HeaderComponent implements OnInit {
 
   menuItems = [
+   
     {
       route: 'auth',
       title: 'Авторизация'
-    }
+    },
+   
   ]
 
   date = new Date();
 
   userLogin: string = '';
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const user = this.userService.getUserFromStorage();
@@ -33,5 +40,10 @@ export class HeaderComponent implements OnInit {
       this.date = new Date();
     }, 1000);
 
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/auth'])
   }
 }

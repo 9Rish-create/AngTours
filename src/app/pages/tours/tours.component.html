@@ -1,15 +1,35 @@
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap gap-3 tours-container">
 
-    
     @for (item of tours; track item.id) {
-    <div class="tour-item">
-        <p>{{item.type}}</p>
-        <p>{{item.date}}</p>
-        <p>{{item.desciption}}</p>
-        <div>
-            <img src="/img/{{item.img}}" alt="">
-        </div>
-
-    </div>
+  
+      <mat-card class="tour-card">
+  
+        <img mat-card-image [src]="'assets/img/' + item.img" [alt]="item.name">
+  
+        <mat-card-title>
+          {{ item.name }}
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+          {{ item.tourOperator }}
+        </mat-card-subtitle>
+  
+        <mat-card-content>
+          <p>{{ item.description }}</p>
+  
+          <p><strong>Type:</strong> {{ item.type }}</p>
+  
+          <p><strong>Price:</strong> {{ item.price }}</p>
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="primary">
+            Подробнее
+          </button>
+        </mat-card-actions>
+  
+      </mat-card>
+  
     }
-</div>
+  
+  </div>

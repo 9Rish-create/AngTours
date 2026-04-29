@@ -1,7 +1,35 @@
-.tour-item {
-    width: 300px;
-    margin: 10px;
-    & img {
-        width: 100%;
-    }
-}
+.tours-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch;
+  }
+  
+  .tour-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .tour-card img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: auto;
+  }
+  mat-card-content {
+    flex-grow: 1;
+  }
+  .desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;   
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }

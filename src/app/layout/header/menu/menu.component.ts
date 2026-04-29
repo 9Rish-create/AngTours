@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SettingsComponent } from '../../../pages/settings/settings.component';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnChanges {
-  @Input() items: any[] = [];
+  @Input() items: any[] = [
+    {
+      route: 'settings', Component: SettingsComponent,
+      title: 'Настройки'
+    },
+    {
+      route: 'home',
+      title: "Главная"
+    },
+
+  ]; //hw
   @Input() label: string;
 
   ngOnChanges(changes: SimpleChanges): void {

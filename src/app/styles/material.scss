@@ -1,0 +1,12 @@
+mat-card {
+    & .mat-mdc-card-header {
+        padding: 4px;
+        height: 70px;
+        overflow: hidden;
+    }
+
+    & .mat-mdc-card-content {
+        height: 200px;
+        overflow: auto;
+    }
+}
